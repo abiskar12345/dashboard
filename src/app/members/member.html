@@ -1,0 +1,84 @@
+
+    <div class="wrapper">
+      <acme-navbar></acme-navbar>
+      <acme-header></acme-header>
+
+        <main>
+            <div class="container">
+                <button class="openModal" ng-click="vmm.openModal()">Add Members</button>
+
+                <div class="modal-wrapper">
+                    <div class="modal">
+                        <div class="container">
+                            <span class="close"><i class="fa fa-times"></i></span>
+                               <!-- <form action=" "> -->
+
+                                   
+                        <div class="form-row">
+                            <label for="img">Upload your photo:</label>
+                            <input type="file" id="img" name="img" accept="image/*">   
+                        </div>
+                        <div class="form-row">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="fullname" name="fullname" ng-model="member.name" placeholder="Your name..">
+                          </div>
+                          <div class="form-row">
+                            <label for="dob">Date of Birth</label>
+                            <input class="dob" type="number" id="dob" name="dob" ng-model="member.birthyear" placeholder="Your day of birth..">
+                            <input class="dob" type="number" id="dob" name="dob" ng-model="member.birthmonth"  placeholder="Your month of birth..">
+                            <input class="dob" type="number" id="dob" name="dob" ng-model="member.birthyear"  placeholder="Your year of birth..">
+                          </div>
+                          <div class="form-row">
+                            <label for="profession">Profession</label>
+                            <input type="text" id="profession" name="profession" ng-model="member.profession"  placeholder="Your profession..">
+                          </div>
+                          <div class="form-row">
+                            <label for="height">Height</label>
+                            <input type="text" id="height" name="height" ng-model="member.height"  placeholder="Your height..">
+                          </div>
+                          <div class="form-row">
+                            <label for="location">Location</label>
+                            <input type="text" id="location" name="location" ng-model="member.country"  placeholder="Your location..">
+                          </div>
+                          <div class="form-row">
+                            <label for="siblings">Siblings</label>
+                            <input type="text" id="siblings" name="siblings" ng-model="member.siblings"  placeholder="Your siblings..">
+                          </div>
+                      /*    <div class="form-row">
+                            <label for="education">Education</label>
+                            <input type="text" id="education" name="education" ng-model="member.education"  placeholder="Your education..">
+                          </div>
+                          <!-- <div class="form-row">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Write something.."></textarea>
+                          </div> -->
+                          <input type="submit" value="Submit" ng-click=(vmm.register(member))>
+                   
+                        </div>
+                    </div>
+                </div>
+
+               <section class="recent-members">
+                <table id="customers">
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Joined</th>
+                      <th>Location</th>
+                    </tr>
+                    <tr ng-repeat="profile in profiles| limitTo:15 track by $index">
+                      <td>{{profile._id}}</td>               
+                    <td>{{profile.name}}</td>
+                      <td>{{profile.createdAt}}</td>
+                      <td>{{profile.location}}</td>
+                    </tr>
+                   
+                  </table>
+               </section>
+            </div>
+        </main>
+        
+        <footer></footer>
+
+    </div>
+    

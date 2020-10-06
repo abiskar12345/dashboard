@@ -1,0 +1,71 @@
+.form-wrapper {
+    width: 100%;
+    max-width: 100%;
+    display: block !important;
+    height: 100%;
+    background-color: white;
+    margin-top: 40px;
+    padding: 30px 20px;
+}
+
+
+form h1 {
+
+    margin-bottom: 35px;
+}
+.form-control {
+    display: grid !important;
+    grid-column-gap: 40px;
+    grid-template-areas: 
+    "upload... "
+    "input1 input2"
+    "input3  input4" 
+    "input5..."
+    ;
+}
+
+.form-control div {
+    margin-bottom: 40px;
+}
+
+.btn-signin {
+    width: 200px;
+    align-self: center;
+}
+
+.upload {
+    grid-area: upload;
+    margin-top: auto;
+    margin-bottom: auto;
+
+}
+.input1 {
+    grid-area: input1;
+}
+.input2 {
+    grid-area: input2;
+}
+.input3 {
+    grid-area: input3;
+}
+.input4 {
+    grid-area: input4;
+}
+.input5 {
+    grid-area: input5;
+}
+
+/* Responsiveness */
+
+@media only screen and (max-width:768px) {
+    .form-control {
+        
+        grid-template-areas: 
+        "input1"
+        "input2" 
+        "input3"
+        "input4"
+        "input5"
+        ;
+    }
+}

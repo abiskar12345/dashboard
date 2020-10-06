@@ -1,0 +1,212 @@
+<acme-navbar></acme-navbar>
+        <div class="breadcrumb-area">
+            <div class="container">
+                <div class="breadcrumb-content">
+                    <h2>Shop</h2>
+                    <ul>
+                        <li><a href="#/">Home</a></li>
+                        <li> <a href="#/category">category</a> </li>
+                    <!--     <li>{{category name}}</li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- IWG's Breadcrumb Area End Here -->
+
+        <!-- Begin IWG's Content Wrapper Area -->
+        <div class="IWG-content_wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 order-2 order-lg-1">
+                        <div class="IWG-sidebar-catagories_area">
+                           <div class="category-module IWG-sidebar_categories">
+                                <div class="category-module_heading">
+                                    <h5>Categories</h5>
+                                </div>
+                                <div class="module-body">
+                                    <ul class="module-list_item">
+                                
+                                                <li  ng-repeat=" x in vms.category | filter: { pc : vms.subcat}">
+                                                    <a href="#/shopc/{{x.name}}" />{{x.name}}</a>
+                                                    
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div> 
+                            <div class="IWG-sidebar_categories">
+                                <div class="IWG-categories_title">
+                                    <h5>Price</h5>
+                                </div>
+                                <div class="price-filter">
+                                    <div id="slider-range"></div>
+                                    <div class="price-slider-amount">
+                                        <div class="label-input">
+                                            <label>price : </label>
+                                            <input type="text" id="amount" name="price" placeholder="Add least price"  ng-model="vms.range"/>
+                                        </div>
+                                        <!-- <button type="button">Filter</button> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="IWG-sidebar_categories">
+                                <div class="IWG-categories_title">
+                                    <h5>Brand</h5>
+                                </div>
+                                <ul class="sidebar-checkbox_list" ng-repeat="x in vms.products | unique : 'brandname'">
+                                    <li>
+                                        <a href="#/shopc/{{x.catname}}">{{x.brandname}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                        </div>
+                  
+
+                        <div class="sidebar-banner_area">
+                            <div class="banner-item img-hover_effect">
+                                <a href="javascript:void(0)">
+                                    <img src="assets/images/banner/1_1.jpg" alt="IWG's Shop Banner Image">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 order-1 order-lg-2">
+                        <div class="shop-toolbar">
+                            <div class="product-view-mode">
+                                <a class="active grid-3" data-target="gridview-3" data-toggle="tooltip" data-placement="top" title="Grid View"><i class="fa fa-th"></i></a>
+                                <!-- <a class="list" data-target="listview" data-toggle="tooltip" data-placement="top" title="List View"><i class="fa fa-th-list"></i></a> -->
+                            </div>
+                            <div class="product-item-selection_area">
+                                <div class="product-short">
+                                    <label class="select-label">Sort By:</label>
+                                    <select class="nice-select" ng-model="vms.sort" ng-click="vms.begin=0"  >
+                                        <option  value="">Relevance</option>
+                                        <option value=" 'name' ">Name, A to Z</option>
+                                        <option value=" '-name' ">Name, Z to A</option>
+                                        <option value="saleprice-0">Price, low to high</option>
+                                        <option value="-saleprice-0">Price, high to low</option>
+                                        <option value="5">Rating (Highest)</option>
+                                        <option value="5">Rating (Lowest)</option>
+                                        <option value="Id">Model (A - Z)</option>
+                                        <option value="-Id">Model (Z - A)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="shop-product-wrap grid gridview-3 row">
+                            <div class="col-lg-4" ng-repeat ="x in vms.products |orderBy: vms.sort | limitTo : 15: vms.begin  track by $index">
+                                <div class="slide-item slide-item-v2 " >
+                                    <div class="single_product" >
+                                        <div class="product-img">
+                                            <a href="#/details/{{x.id}}" style="text-align: center;">
+                                 <img class="primary-img" src="{{x.image}}" style="height: 200px;width:auto; margin-top: 10px; padding-bottom: 10px;"     alt="IWG's Product Image">
+                                       <!-- <img class="secondary-img" src="https://www.homeservicenepal.com/admin/api/upload/{{x.img}}" style="height: 338px;width: 438px;"  alt="IWG's Product Image"> -->
+                                            </a>
+                                            <div class="add-actions">
+                                                <ul>
+                                                    <li><a class="IWG-add_cart"   data-toggle="tooltip" data-placement="top" ng-click="addToCart(x)"><i class="ion-bag"></i></a>
+                                                    </li>
+                                                    <li><a class="IWG-add_compare" ng-click="addToCompare(x)" data-toggle="tooltip" data-placement="top" title="Compare This Product"><i
+                                                            class="ion-ios-shuffle-strong"></i></a>
+                                                    </li>
+                                                    <li class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><a href="#/details/{{x.id}}" data-toggle="tooltip" data-placement="top" title="Quick View"><i
+                                                            class="ion-eye"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="IWG-product_content">
+                                            <div class="product-desc_info">
+                                                <h6><a class="product-name" href="#/details/{{x.id}}">{{x.name}}</a></h6>
+
+                                                <div class="price-box">
+                                                    <span class="new-price">Rs.{{x.saleprice}}</span>
+                                                </div>
+                                                <div class="additional-add_action">
+                                                    <ul>
+                                                        <li><a class="IWG-add_compare " ng-click="addToWishlist(x)" href="#/wishlist" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i
+                                                                class="ion-android-favorite-outline"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="rating-box">
+                                                    <a class="IWG-banner_btn" href="#/details/{{x.id}}">view details</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                                <div class="list-slide_item">
+                                    <div class="single_product">
+                                        <div class="product-img">
+                                            <a href="#/details" style="text-align: center;">
+                                              <img class="primary-img" src="{{x.image}}" style="height: 200px;width:auto; margin-top: 10px"    alt="IWG's Product Image">
+                                            </a>
+                                        </div>
+                                        <div class="IWG-product_content">
+                                            <div class="product-desc_info">
+                                                <h6><a class="product-name" href="single-product.html">Global Knives:
+                                                        Profession...</a></h6>
+                                                <div class="rating-box">
+                                                    <a class="IWG-banner_btn" href="#/details/{{x.id}}">veiw details</a>
+                                                </div>
+                                                <div class="price-box">
+                                                    <span class="new-price">£60.25</span>
+                                                </div>
+                                                <div class="product-short_desc">
+                                                    <p>The effects of gold are subtle, but definitely apparent. ... It was considered that gold possessed an energy that brought warm, soothing vibrations to the body to aid healing, for when the body relaxes and the blood vessels in the cells aren't as constricted, blood can move through the tissue spaces more easily.</p>
+                                                </div>
+                                            </div>
+                                            <div class="add-actions">
+                                                <ul>
+                                                    <li><a class="IWG-add_cart" href="cart.html" data-toggle="tooltip" data-placement="top" title="AddToCart">Add To Cart</a></li>
+                                                    <li><a class="IWG-add_compare"  ng-click="addToCompare(x)" data-toggle="tooltip" data-placement="top" title="Compare This Product"><i
+                                                            class="ion-ios-shuffle-strong"></i></a></li>
+                                                    <li class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Quick View"><i
+                                                            class="ion-eye"></i></a></li>
+                                                    <li><a class="IWG-add_compare" ng-click="addToWishlist()" href="wishlist.html" data-toggle="tooltip" data-placement="top" title="Add To Wishlist"><i
+                                                            class="ion-android-favorite-outline"></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+             
+                         
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="IWG-paginatoin-area">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-6">
+                                            <ul class="IWG-pagination-box">
+                                               
+                                                <li><a class="preVious" type="submit"  href=""  ng-click="vms.paging('pre')"><i
+                                                        class="ion-ios-arrow-left"> Previous</i></a></li>
+                                                         <li><a class="Next"  type="submit"  href="" ng-click="vms.paging('next')"><i
+                                                        class="ion-ios-arrow-right">Next</i></a> </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6">
+                                            <div class="product-select-box">
+                                                <div class="product-short">
+                                        
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+<acme-footer></acme-footer>
+<acme-mobile></acme-mobile>

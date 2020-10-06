@@ -1,0 +1,234 @@
+*{
+    margin:0px;
+    padding: 0px;
+    font-family: 'Montserrat';
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 90%;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.wrapper{
+    min-height: 100vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 95%;
+    grid-template-rows: 60px auto 40px;
+    grid-template-areas: 
+        "header header"
+        "sidebar main"
+        "sidebar footer"
+    ;
+}
+
+aside {
+    grid-area: sidebar;
+    z-index: 100;
+    background-color: #1b1b2f;
+    text-align: left;
+    height: 100%;
+}
+
+/* aside .container{
+ 
+} */
+
+aside .side-header{
+    background-color: crimson;
+    width: 100%;
+    color: white;
+    box-shadow: 0px 0px 5px #999;
+
+}
+
+aside ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0px 20px;
+
+}
+
+aside ul li {
+    margin: 30px 0px;
+}
+
+aside ul li .fa {
+    margin-right: 10px;
+}
+
+aside ul .active {
+    background-color: rgb(47, 47, 77);
+    padding: 10px 0px;
+}
+
+header {
+    grid-area: header;
+    position: fixed;
+    top: 0%;
+    right:0%;
+    /* left:260px; */
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    box-shadow: 0px 1px 10px #999;
+
+}
+
+main {
+    grid-area: main;
+    background-color: #f7f4f4;
+}
+
+
+footer{
+    grid-area: footer;
+    background-color: darkgrey;
+}
+
+nav .container ul {
+    display: flex;
+
+}
+
+nav li {
+    list-style-type: none;
+    margin: 0 20px;
+    font-size: 20px;
+}
+
+nav .logo {
+
+    background-color: crimson;
+    height: 100%;
+    color: white;
+    padding: 20px;
+} 
+
+.openModal {
+    padding: 7px 10px;
+    background: crimson;
+    border: none;
+    color: white;
+}
+
+.section-A {
+    display: grid;
+    grid-template-columns: 50% auto;
+
+}
+
+.section-A .right {
+    background: white;
+}
+
+
+/* Tables */
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  #customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #customers tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #customers tr:hover {background-color: #ddd;}
+  
+  #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #0e9aa7 ;
+    color: white;
+  }
+
+
+  /* Style inputs */
+
+  .form-row {
+    margin-bottom: 16px;
+  }
+
+  input[type=text], input[type=number], input[type=email], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    margin-top: 6px;
+    resize: vertical;
+    outline: none;
+  }
+
+  textarea {
+    height: 100px;
+
+  }
+  
+  input[type=submit] {
+    background: crimson;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    display: block;
+    width: 100%;
+    border-radius: 5px;
+
+
+  }
+  
+  /* input[type=submit]:hover {
+    background-color: ;
+  } */
+
+  .contact label {
+    text-align: left;
+}
+
+.modal-wrapper {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: rgba(17, 17, 17, 0.9);
+    overflow: auto;
+    display: none;
+}
+
+.modal {
+    width: 800px;
+    height: auto;
+    margin: 5% auto;
+    background-color: white;
+    position: relative;
+
+}
+
+.modal .container {
+    padding: 40px 20px;
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    color: black;
+    font-size: 30px;
+    cursor: pointer;
+}
